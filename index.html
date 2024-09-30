@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <title> imagem </title>
+    <script>
+        <script type= "text/javascript"
+    var myGamePiece_red;
+    function startGame() {
+        myGamePiece_red = new component(30,30,"red",10,0);
+        myGameArea.start();
+    
+    }
+    var myGameArea = {
+        canvas : document.createElement("canvas"),
+        start: function(){
+            this.canvas.width = 1220;
+            this.canvas.height = 70;
+            this.context = this.canvas.getContext("2d");
+            document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+            this.interval = setInterval(updateGameArea, 20);
+            window.addEventListener('keydown', function (e) {                
+            })
+            myGameArea.key = e.keyCode;
+        })
+        window.addEventListener('keyup', function (e) {
+            myGameArea.key = false;
+        })
+
+        },
+        clear : function() {
+            this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
+         }
+         }
+        function compenent (width, height, color, x, y) {
+            this.width = width;
+            this.height = height;
+            this.speedX = 0;
+            this.speedY = 0;
+            this.x = x;
+            this.y = y;
+            this.color = color;
+            this.update = function() {
+                ctx = myGameArea.context;
+                /*Início do novo componente */
+                ctx.beginPath();
+                ctx.fillStyle = this.color;
+                ctx.moveTo(this.x+200, this.y+100);
+                ctx.quadraticCurveTo(this.x+150, this.y+150, this.x+200, this.y+200);
+                ctx.fill();
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(this.x+200, this.y+100);
+                ctx.quadraticCurveTo(this.x+250,this.y+150, this.x+200, this.y+200);
+                ctx.fill();
+                ctx.stroke();
+                ctx.closePath();
+
+            }
+        this.newPos = function() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+        }
+        }
+        myGamePiece_red.speedY =0 ;
+        </script>
+
+    
+    
+    </head>
+</html>
